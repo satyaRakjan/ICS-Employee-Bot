@@ -113,8 +113,8 @@ function handleEvent(event) {
           echo = { type: 'text', text: getMessage.slice(0, 2).toUpperCase() };
           googlSheetFunc(event,"NN")
         }else{
-          echo = { type: 'text', text: event.message.text };
-          return client.replyMessage(event.replyToken, echo);
+          // echo = { type: 'text', text: event.message.text };
+          // return client.replyMessage(event.replyToken, echo);
 
         }
       //  googlSheetFunc();
