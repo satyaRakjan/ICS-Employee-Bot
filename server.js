@@ -120,6 +120,8 @@ function handleEvent(event) {
         }else if(getMessage.slice(0, 2).toUpperCase() === "NN"){
           echo = { type: 'text', text: getMessage.slice(0, 2).toUpperCase() };
           googlSheetFunc(event,"NN")
+        }else{
+          return client.replyMessage(event.replyToken,  { type: 'text', text: event.message.text });
         }
       //  googlSheetFunc();
       // client.replyMessage(event.replyToken, echo);
