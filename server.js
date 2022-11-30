@@ -107,11 +107,11 @@ function handleEvent(event) {
         var getMessage = event.message.text;
         if(getMessage.slice(0, 4).charAt(0).toUpperCase()+ getMessage.slice(1, 4) === "Name"){
           echo = { type: 'text', text: getMessage.slice(0, 3).charAt(0).toUpperCase()+ getMessage.slice(1, 4)  };
-          // googlSheetFunc(event,"Name")
+          googlSheetFunc(event,"Name")
 
         }else if(getMessage.slice(0, 2).toUpperCase() === "NN"){
           echo = { type: 'text', text: getMessage.slice(0, 2).toUpperCase() };
-          // googlSheetFunc(event,"NN")
+          googlSheetFunc(event,"NN")
         }else{
           echo = { type: 'text', text: event.message.text };
         }
