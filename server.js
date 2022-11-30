@@ -114,6 +114,8 @@ function handleEvent(event) {
           googlSheetFunc(event,"NN")
         }else{
           echo = { type: 'text', text: event.message.text };
+          return client.replyMessage(event.replyToken, echo);
+
         }
       //  googlSheetFunc();
       // client.replyMessage(event.replyToken, echo);
@@ -124,7 +126,6 @@ function handleEvent(event) {
     // create a echoing text message
   
     // use reply API
-    return client.replyMessage(event.replyToken, echo);
   }
   
   function googlSheetFunc(event,type){
