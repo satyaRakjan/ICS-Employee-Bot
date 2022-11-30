@@ -72,7 +72,7 @@ async function listMajors(auth) {
   }
 
 app.get('/',(req,res) =>{
-  res.send('hello')
+  res.send('hello2')
 })
 
 app.post("/webhook", middleware(config),(req, res) => {
@@ -94,9 +94,9 @@ app.post("/webhook", middleware(config),(req, res) => {
     }
     next(err) // will throw default 500
   })
-  // app.use(cors({ origin: true }));
-  // app.use(express.json());
-  // app.use(express.urlencoded({ extended: true }));
+  app.use(cors({ origin: true }));
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
 
 // event handler
 function handleEvent(event) {
