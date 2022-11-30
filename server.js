@@ -84,16 +84,16 @@ app.post("/webhook", middleware(config),(req, res) => {
         res.status(500).end();
       });
   });
-  // app.use((err, req, res, next) => {
-  //   if (err instanceof SignatureValidationFailed) {
-  //     res.status(401).send(err.signature)
-  //     return
-  //   } else if (err instanceof JSONParseError) {
-  //     res.status(400).send(err.raw)
-  //     return
-  //   }
-  //   next(err) // will throw default 500
-  // })
+  app.use((err, req, res, next) => {
+    if (err instanceof SignatureValidationFailed) {
+      res.status(401).send(err.signature)
+      return
+    } else if (err instanceof JSONParseError) {
+      res.status(400).send(err.raw)
+      return
+    }
+    next(err) // will throw default 500
+  })
   // app.use(cors({ origin: true }));
   // app.use(express.json());
   // app.use(express.urlencoded({ extended: true }));
