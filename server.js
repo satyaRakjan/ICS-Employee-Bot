@@ -1,7 +1,6 @@
 // const fetch = require('node-fetch');
 const express = require('express');
 const line = require('@line/bot-sdk');
-const product = require("./api/product");
 
 // const bodyParser = require('body-parser')
 const middleware = require('@line/bot-sdk').middleware
@@ -77,9 +76,7 @@ async function listMajors(auth) {
       //   return rows
       // }
   }
-  app.use(cors({ origin: true }));
-  app.use(express.json());
-  app.use(express.urlencoded({ extended: true }));
+
 app.get('/',(req,res) =>{
   res.send('hello')
 })
@@ -103,7 +100,9 @@ app.post("/webhook", middleware(config),(req, res) => {
     }
     next(err) // will throw default 500
   })
-
+  app.use(cors({ origin: true }));
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
 
 // event handler
 function handleEvent(event) {
@@ -120,18 +119,18 @@ function handleEvent(event) {
           echo = { type: 'text', text: getMessage.slice(0, 2).toUpperCase() };
           googlSheetFunc(event,"NN")
         }else{
-          return client.replyMessage(event.replyToken,  { type: 'text', text: event.message.text });
+          echo = { type: 'text', text: event.message.text };
         }
       //  googlSheetFunc();
       // client.replyMessage(event.replyToken, echo);
-        // echo = { type: 'text', text: event.message.text };
+        
       // ignore non-text-message event
     }
   
     // create a echoing text message
   
     // use reply API
-    // return client.replyMessage(event.replyToken, echo);
+    return client.replyMessage(event.replyToken, echo);
   }
   
   function googlSheetFunc(event,type){
@@ -214,4 +213,4 @@ function handleEvent(event) {
 
   // listen on port
   app.listen(5001)
-  module.exports = app;
+  // module.exports = app;
