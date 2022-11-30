@@ -10,6 +10,7 @@ require('dotenv').config();
 
 const cors = require('cors');
 const process = require('process');
+const port = process.env.PORT || 3000;
 
 const config = {
     channelAccessToken: process.env.Access_Token,
@@ -71,7 +72,7 @@ async function listMajors(auth) {
       return rows;
   }
 
-app.get('/',(req,res) =>{
+app.get('/hello',(req,res) =>{
   res.send('hello2')
 })
 
@@ -207,5 +208,5 @@ function handleEvent(event) {
   }
 
   // listen on port
-  app.listen(5001)
+  app.listen(port)
   module.exports = app;
