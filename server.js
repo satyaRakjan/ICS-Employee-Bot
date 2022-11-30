@@ -207,3 +207,4 @@ function handleEvent(event) {
 
   // listen on port
   app.listen(5001)
+  module.exports = app;
