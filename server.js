@@ -19,11 +19,11 @@ const client = new line.Client(config);
 const app = express();
 const fs = require('fs').promises;
 const path = require('path');
-const {authenticate} = require('@google-cloud/local-auth');
-const {google} = require('googleapis');
-const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
-const TOKEN_PATH = path.join(process.cwd(), 'token.json');
-const CREDENTIALS_PATH = path.join(process.cwd(), 'credentials.json');
+// const {authenticate} = require('@google-cloud/local-auth');
+// const {google} = require('googleapis');
+// const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
+// const TOKEN_PATH = path.join(process.cwd(), 'token.json');
+// const CREDENTIALS_PATH = path.join(process.cwd(), 'credentials.json');
 
 
 // async function loadSavedCredentialsIfExist() {
