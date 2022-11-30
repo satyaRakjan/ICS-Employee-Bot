@@ -78,6 +78,9 @@ async function listMajors(auth) {
       // }
   }
 
+app.get('/',(req,res) =>{
+  res.send('hello')
+})
 
 app.post("/webhook", middleware(config),(req, res) => {
     Promise
@@ -101,7 +104,7 @@ app.post("/webhook", middleware(config),(req, res) => {
 app.use(cors({ origin: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/api/product", product);
+// app.use("/api/product", product);
 
 // event handler
 function handleEvent(event) {
