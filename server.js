@@ -1,6 +1,8 @@
 // const fetch = require('node-fetch');
 const express = require('express');
 const line = require('@line/bot-sdk');
+const product = require("./api/product");
+
 // const bodyParser = require('body-parser')
 const middleware = require('@line/bot-sdk').middleware
 const JSONParseError = require('@line/bot-sdk').JSONParseError
@@ -99,7 +101,8 @@ app.post("/webhook", middleware(config),(req, res) => {
 app.use(cors({ origin: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-  
+app.use("/api/product", product);
+
 // event handler
 function handleEvent(event) {
        var echo ;
