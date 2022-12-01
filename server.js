@@ -107,25 +107,27 @@ function handleEvent(event) {
     if (event.type === 'message') {
         var getMessage = event.message.text;
         if(getMessage.slice(0, 4).charAt(0).toUpperCase()+ getMessage.slice(1, 4) === "Name"){
-          echo = { type: 'text', text: getMessage.slice(0, 3).charAt(0).toUpperCase()+ getMessage.slice(1, 4)  };
-          googlSheetFunc(event,"Name")
+          // echo = { type: 'text', text: getMessage.slice(0, 3).charAt(0).toUpperCase()+ getMessage.slice(1, 4)  };
+         googlSheetFunc(event,"Name");
 
         }else if(getMessage.slice(0, 2).toUpperCase() === "NN"){
-          echo = { type: 'text', text: getMessage.slice(0, 2).toUpperCase() };
-          googlSheetFunc(event,"NN")
-        }else{
-          // echo = { type: 'text', text: event.message.text };
+          // echo = { type: 'text', text: getMessage.slice(0, 2).toUpperCase() };
+          googlSheetFunc(event,"NN");
+        }else if(getMessage.charAt(0).toUpperCase()+ getMessage.slice(1, 4)  === "Help"){
+          echo = { type: 'text', text: "คำสั่ง Name,name : ใช้ค้นหาข้อมูลพนักงานจากชื่อจริง"+
+          "ตัวอย่างการใช้งาน : Name ชเนรินทร์ ,หรือ Name ชเน"+
+          "คำสั่ง NN,Nn,nn : ใช้ค้นหาข้อมูลพนักงานจากชื่อเล่น"+
+          "ตัวอย่างการใช้งาน : NN เต้ย ,หรือ NN เต"};
           // return client.replyMessage(event.replyToken, echo);
-
+          return client.pushMessage(event.source.userId, echo);
         }
       //  googlSheetFunc();
       // client.replyMessage(event.replyToken, echo);
         
       // ignore non-text-message event
     }
-  
     // create a echoing text message
-  
+   
     // use reply API
   }
   
@@ -201,9 +203,9 @@ function handleEvent(event) {
         }
       } 
       client.pushMessage(event.source.userId, message);
+    
 
    })
-
   //  return client.replyMessage(event.replyToken, echo);
   }
 
